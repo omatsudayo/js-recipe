@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h3>まつりんの趣味はなんでしょう？</h3>
+    <button id="dance-button">ダンス</button>
+    <button id="cook-button">料理</button>
+    <button id="souji-button">掃除</button>
+    <div id="display"></div>
+
+    <script>
+      const dancebutton = document.getElementById("dance-button")
+      const cookbutton = document.getElementById("cook-button")
+      const soujibutton = document.getElementById("souji-button")
+      const display = document.getElementById("display")
+
+      //撮ってきた要素をいじる
+      dancebutton.onclick = function() {
+        display.textContent = "正解！拍手！"
+      }
+      cookbutton.onclick = function() {
+        display.textContent = "不正解！下手くそ！"
+      }
+      soujibutton.onclick = function() {
+        display.textContent = "嫌い！"
+      }
+    </script>
+  </body>
+</html>
