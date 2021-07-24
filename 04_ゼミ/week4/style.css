@@ -1,3 +1,8 @@
+html {
+  font-family: MercariSans-Bold, Avenir-Black, Arial, TazuganeGothicStdN-Bold,
+    "游ゴシック体", YuGothic, "游ゴシック", "Yu Gothic", sans-serif;
+}
+
 body {
   background-image: url("black.jpg");
   background-size: cover;

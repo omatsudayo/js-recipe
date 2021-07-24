@@ -16,11 +16,11 @@ const quiz = {
     },
     {
       text: "りゅう様",
-      feedback: "誰っすか！",
+      feedback: "誰やねん！",
     },
     {
       text: "むー様",
-      feedback: "可愛いけども！",
+      feedback: "可愛いね！けど違うよ！",
     },
   ],
 }
