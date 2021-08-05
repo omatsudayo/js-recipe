@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue ATM</title>
+  </head>
+  <body>
+    <div id="app">
+      <section>
+        <h2>入力画面</h2>
+        <input type="number" v-model="nyuryokugaku" />
+        <div>入力額: {{ nyuryokugaku }} 円</div>
+        <div>
+          <button v-on:click="nyukin">入金</button>
+          <button v-on:click="shukin" v-bind:disabled="hasZandaka">出金</button>
+        </div>
+      </section>
+      <section>
+        <h2>口座残高</h2>
+        <div>残高: {{ zandaka }}円</div>
+      </section>
+      <section>
+        <h2>取引記録</h2>
+        <div v-if="logs.length > 0">
+          <div v-for="log in logs">
+            <div>
+              日付: {{ log.date }}
+            </div>
+            <div>
+              操作: {{ log.type }}
+            </div>
+            <div>
+              金額: {{ log.money }}
+            </div>
+          </div>
+        </div>
+        <div v-else>
+          取引記録はありません。
+        </div>
+      </section>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script>
+      const app = new Vue({
+        el: "#app",
+        data: {
+          nyuryokugaku: 0,
+          zandaka: 0,
+          logs: [
+            {
+              date: new Date("2021-07-23T12:00:00"),
+              type: "入金",
+              money: 1000,
+            },
+            {
+              date: new Date("2021-07-23T13:00:00"),
+              type: "出金",
+              money: 1000,
+            },
+          ],
+        },
+        methods: {
+          nyukin: function() {
+            this.zandaka += Number(this.nyuryokugaku)
+            this.logs.push({
+              date: new Date(),
+              type: "入金",
+              money: Number(this.nyuryokugaku),
+            })
+            console.log(new Date())
+          },
+          shukin: function() {
+            this.zandaka -= Number(this.nyuryokugaku)
+            this.logs.push({
+              date: new Date(),
+              type: "出金",
+              money: Number(this.nyuryokugaku),
+            })
+          },
+        },
+        computed: {
+          hasZandaka: function() {
+            return !(this.zandaka > 0)
+          },
+        },
+      })
+    </script>
+  </body>
+</html>
